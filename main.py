@@ -12,7 +12,7 @@ def main():
     class_model = ClassModel(db)
     class_controller = ClassController(class_model)
 
-    app = Window(themename="flatly")
+    app = Window(themename="darkly")
     ClassView(app, class_controller)
     app.mainloop()
 
