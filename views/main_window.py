@@ -1,7 +1,7 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import * # TOP BOTH RIGHT...
-from views.class_form_view import ClassFormView
-from views.class_list_view import ClassListView
+from views.class_view.class_form_view import ClassFormView
+from views.class_view.class_list_view import ClassListView
 from controllers.class_controller.class_form_controller import ClassFormController
 from controllers.class_controller.class_list_controller import ClassListController
 from models.class_model import ClassModel
