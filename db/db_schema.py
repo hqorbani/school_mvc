@@ -10,7 +10,10 @@ def create_tables(db):
     db.execute("""
         CREATE TABLE IF NOT EXISTS students (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL
+            name TEXT NOT NULL,
+            national_code TEXT NOT NULL,
+            mobile TEXT NOT NULL,
+            password TEXT NOT NULL
         )
     """)
 
