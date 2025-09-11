@@ -26,20 +26,17 @@ class MainWindow(ttk.Window):
         self.content = ttk.Frame(self)
         self.content.pack(fill=BOTH)
 
-        self.current_view = None
         self.show_class_form()
     
     def show_class_form(self):
         self._clear_content()
         view = ClassFormView(self.content)
         ClassFormController(self.model , view)
-        self.current_view = view
 
     def show_class_list(self):
         self._clear_content()
         view = ClassListView(self.content)
         ClassListController(self.model , view)
-        self.current_view = view
         
     def _clear_content(self):
         for widget in self.content.winfo_children():
