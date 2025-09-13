@@ -15,9 +15,12 @@ from models.class_model import ClassModel
 from db.db_connection import Database
 from db.db_schema import create_tables
 
+from apps.rw_files import read_json_file
+
 class MainWindow(ttk.Window):
     def __init__(self):
-        super().__init__(themename="flatly" , title="سیستم مدرسه" , size=(600, 400))
+        app_properties = read_json_file('json/app_properties.json')
+        super().__init__(themename= app_properties['theme'] , title= app_properties['title'] , size=(600, 400))
         self.db = Database("database.db")
         create_tables(self.db)
         self.class_model = ClassModel(self.db)
