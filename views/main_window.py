@@ -17,6 +17,11 @@ from db.db_schema import create_tables
 
 from apps.rw_files import read_json_file
 
+from views.enrollment_view.enrollment_form_view import EnrollmentFormView
+from controllers.enrollment_controller.enrollment_form_controller import EnrollmentFormController
+from models.enrollment_model import EnrollmentModel
+
+
 class MainWindow(ttk.Window):
     def __init__(self):
         app_properties = read_json_file('json/app_properties.json')
@@ -25,6 +30,8 @@ class MainWindow(ttk.Window):
         create_tables(self.db)
         self.class_model = ClassModel(self.db)
         self.student_model = StudentModel(self.db)
+        self.enrollment_model = EnrollmentModel(self.db)
+
         self._create_menu()
     
     def _create_menu(self):
@@ -36,6 +43,8 @@ class MainWindow(ttk.Window):
 
         ttk.Button(self.navbar, text="ثبت دانش آموز" , command= self.show_student_form).pack(side=RIGHT , padx=1)
         ttk.Button(self.navbar, text=" دانش آموزان" , command= self.show_student_list).pack(side=RIGHT , padx=1)
+        ttk.Button(self.navbar, text="ثبت کلاس برای دانش‌آموز", command=self.show_enrollment_form).pack(side=RIGHT , padx=1)
+
 
         self.content = ttk.Frame(self)
         self.content.pack(fill=BOTH)
@@ -61,6 +70,11 @@ class MainWindow(ttk.Window):
         self._clear_content()
         view = StudentListView(self.content)
         StudentListController(self.student_model , view)
+    
+    def show_enrollment_form(self):
+        self._clear_content()
+        view = EnrollmentFormView(self.content)
+        EnrollmentFormController(self.student_model, self.enrollment_model, view)
 
     def _clear_content(self):
         for widget in self.content.winfo_children():
