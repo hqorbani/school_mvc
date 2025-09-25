@@ -74,7 +74,7 @@ class MainWindow(ttk.Window):
     def show_enrollment_form(self):
         self._clear_content()
         view = EnrollmentFormView(self.content)
-        EnrollmentFormController(self.student_model, self.enrollment_model, view)
+        EnrollmentFormController(self.student_model,self.class_model, self.enrollment_model, view)
 
     def _clear_content(self):
         for widget in self.content.winfo_children():
