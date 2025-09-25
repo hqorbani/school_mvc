@@ -16,6 +16,8 @@ class EnrollmentFormView(ttk.Frame):
 
         self.student_label = ttk.Label(self, text="")
         self.student_label.pack(pady=5)
+        self.mobile_label = ttk.Label(self, text="")
+        self.mobile_label.pack(pady=5)
 
         self.class_frame = ttk.Frame(self)
         self.class_frame.pack(pady=10, fill=X)
@@ -26,8 +28,9 @@ class EnrollmentFormView(ttk.Frame):
     def get_national_code(self):
         return self.national_code_entry.get()
 
-    def show_student(self, name):
+    def show_student(self, name , mobile):
         self.student_label.config(text=f"دانش‌آموز: {name}")
+        self.mobile_label.config(text=f"موبایل: {mobile}")
 
     def show_classes(self, classes, enrolled_ids=None):
         enrolled_ids = enrolled_ids or []
