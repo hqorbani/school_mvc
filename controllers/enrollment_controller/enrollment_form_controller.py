@@ -15,7 +15,7 @@ class EnrollmentFormController:
         student = self.student_model.get_by_national_code(code)
         if student:
             self.student_id = student[0]
-            self.view.show_student(student[1])
+            self.view.show_student(student[1] , student[2])
             classes = self.enrollment_model.get_all_classes()
             enrolled_ids = self.enrollment_model.get_enrolled_class_ids(self.student_id)
             self.view.show_classes(classes, enrolled_ids)
