@@ -13,5 +13,5 @@ class StudentModel:
         self.db.execute("DELETE FROM students WHERE id = ?", (student_id,))
 
     def get_by_national_code(self, code):
-        return self.db.fetchone("SELECT id, name FROM students WHERE national_code = ?", (code,))
+        return self.db.fetchone("SELECT id , name , mobile FROM students WHERE national_code = ?", (code,))
 
