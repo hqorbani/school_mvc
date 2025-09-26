@@ -6,7 +6,7 @@ class ClassModel:
         self.db.execute("INSERT INTO classes (name, capacity) VALUES (?, ?)", (name, capacity))
 
     def get_all_classes(self):
-        return self.db.fetchall("SELECT id, name, capacity FROM classes")
+        return self.db.fetchall("SELECT id, name FROM classes")
 
     def update_class(self, class_id, name, capacity):
         self.db.execute("UPDATE classes SET name = ?, capacity = ? WHERE id = ?", (name, capacity, class_id))
