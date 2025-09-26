@@ -3,7 +3,9 @@ class EnrollmentModel:
         self.db = db
 
     def get_enrolled_class_ids(self, student_id):
+        # واکشی آي دی کلاسهایی که مربوط به دانش آموزی با آی دی مشخصی است.
         rows = self.db.fetchall("SELECT class_id FROM enrollments WHERE student_id = ?", (student_id,))
+        # قرار دادن تک تک آی دی های کلاس های واکشی شده درون یک لیست و ارسال به بیرون متد
         return [row[0] for row in rows]
     
     # این متد مسئول همگام‌سازی ثبت‌نام دانش‌آموز با کلاس‌های انتخاب‌شده در فرم هست
@@ -22,7 +24,7 @@ class EnrollmentModel:
                 self.db.execute("INSERT INTO enrollments (student_id, class_id) VALUES (?, ?)", (student_id, class_id))
             except:
                 pass  # جلوگیری از ثبت تکراری
-
+        # حذف کلاسهای قبلی که دیگر انتخاب نشده اند
         for class_id in to_remove:
             self.db.execute("DELETE FROM enrollments WHERE student_id = ? AND class_id = ?", (student_id, class_id))
 
