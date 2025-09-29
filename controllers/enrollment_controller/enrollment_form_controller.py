@@ -1,3 +1,5 @@
+from messages.errors import ErrorMessages
+from messages.successes import SuccessMessages
 from tkinter import messagebox
 
 class EnrollmentFormController:
@@ -21,12 +23,12 @@ class EnrollmentFormController:
             enrolled_ids = self.enrollment_model.get_enrolled_class_ids(self.student_id)
             self.view.show_classes(classes, enrolled_ids)
         else:
-            messagebox.showerror("خطا", "دانش‌آموزی با این کد ملی یافت نشد.")
+            messagebox.showerror("خطا", ErrorMessages.STUDENT_NOT_FOUND)
 
     def enroll_classes(self):
         if not self.student_id:
-            messagebox.showerror("خطا", "دانش‌آموزی انتخاب نشده است.")
+            messagebox.showerror("خطا", ErrorMessages.STUDENT_NO_SELECTED)
             return
         selected = self.view.get_selected_classes()
         self.enrollment_model.update_student_enrollments(self.student_id, selected)
-        messagebox.showinfo("موفقیت", "ثبت‌نام کلاس‌ها به‌روزرسانی شد.")
+        messagebox.showinfo("موفقیت", SuccessMessages.SUCCESS_CLASS_REGISTRATION)

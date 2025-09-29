@@ -1,4 +1,5 @@
 from messages.errors import ErrorMessages
+from messages.successes import SuccessMessages
 from tkinter import messagebox
 
 class ClassFormController:
@@ -11,9 +12,9 @@ class ClassFormController:
         try:
             data = self.view.get_class_form()
             self.model.add_class(data["name"], data["capacity"])
-            messagebox.showinfo("موفقیت", "دانش‌آموز با موفقیت ثبت شد.")
+            messagebox.showinfo("موفقیت", SuccessMessages.SUCCESS_CLASS_REGISTRATION)
         except Exception as e:
-            messagebox.showerror("خطا", f"ثبت‌نام انجام نشد: {e}")
+            messagebox.showerror("خطا", ErrorMessages.ERROR_CLASS_REGISTRATION + e)
 
     def get_classes(self):
         return self.model.get_all_classes()
