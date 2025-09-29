@@ -1,4 +1,5 @@
 from messages.errors import ErrorMessages
+from messages.successes import SuccessMessages
 from tkinter import messagebox
 
 class StudentFormController:
@@ -11,9 +12,9 @@ class StudentFormController:
         try:
             data = self.view.get_student_form()
             self.model.add_student(data["name"], data["national_code"], data["mobile"], data["password"])
-            messagebox.showinfo("موفقیت", "دانش‌آموز با موفقیت ثبت شد.")
+            messagebox.showinfo("موفقیت", SuccessMessages.SUCCESS_STUDENT_REGISTRATION)
         except Exception as e:
-            messagebox.showerror("خطا", f"ثبت‌نام انجام نشد: {e}")
+            messagebox.showerror("خطا", ErrorMessages.ERROR_STUDENT_REGISTRATION + e)
 
 
     def get_students(self):
