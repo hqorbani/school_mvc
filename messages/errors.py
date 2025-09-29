@@ -6,4 +6,5 @@ class ErrorMessages:
     STUDENT_NO_SELECTED = "دانش‌آموزی انتخاب نشده است."
     DUPLICATE_ENROLLMENT = "دانش‌آموز قبلاً در این کلاس ثبت‌نام شده است."
     ERROR_STUDENT_CLASS_REGISTRATION = "ثبت کلاس برای دانش آموز با خطا روبر شد. لطفا مساله را با مدیر سیستم مطرح کنید"
+    ERROR_STUDENT_REGISTRATION = "ثبت دانش آموز با خطا روبر شد. لطفا مساله را با مدیر سیستم مطرح کنید"
     ERROR_CLASS_REGISTRATION = "ثبت کلاس با خطا روبر شد. لطفا مساله را با مدیر سیستم مطرح کنید"
